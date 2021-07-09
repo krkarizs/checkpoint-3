@@ -18,6 +18,9 @@ download_blob("sevenke-checkpoint-bucket", "checkpoint.txt", "C:/Users/Krisztina
 #Printing the right number of lines from the command line
 import argparse
 
+def sort_func(item):
+    return len(item)
+
 parser = argparse.ArgumentParser()
 parser.add_argument("lines", help="displays the requested number of lines", type=int)
 
@@ -29,5 +32,11 @@ with open("checkpoint.txt") as reader:
     for line in reader:
         name_list.append(line)
 
+filtered_list = []
 for name in range(args.lines):
-    print(name_list[name])
+    filtered_list.append(name_list[name])
+
+sorted_list = sorted(filtered_list, key=sort_func)
+
+for x in sorted_list:
+    print(x)
