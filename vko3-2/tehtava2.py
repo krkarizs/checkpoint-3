@@ -13,7 +13,7 @@ def download_blob(bucket_name, source_blob_name, destination_file_name):
 
     print("Blob {} downloaded to {}.".format(source_blob_name,destination_file_name))
 
-download_blob("checkpoint-storage-bucket", "checkpoint.txt", "C:/Users/KrisztinaKarizs/Desktop/Python exercises/checkpoint3/vko3-2/checkpoint.txt")
+download_blob("sevenke-checkpoint-bucket", "checkpoint.txt", "C:/Users/KrisztinaKarizs/Desktop/Python exercises/checkpoint3/vko3-2/checkpoint.txt")
 
 #Printing the right number of lines from the command line
 import argparse

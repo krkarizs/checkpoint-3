@@ -13,7 +13,7 @@ def create_bucket(bucket_name):
 
     return new_bucket
 
-create_bucket("checkpoint-storage-bucket")
+create_bucket("sevenke-checkpoint-bucket")
 
 #Grabbing data and printing the txt file
 import requests
@@ -48,4 +48,4 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
         )
     )
 
-upload_blob("checkpoint-storage-bucket", "C:/Users/KrisztinaKarizs/Desktop/Python exercises/checkpoint3/vko3-1/checkpoint.txt", "checkpoint.txt")
+upload_blob("sevenke-checkpoint-bucket", "C:/Users/KrisztinaKarizs/Desktop/Python exercises/checkpoint3/vko3-1/checkpoint.txt", "checkpoint.txt")
