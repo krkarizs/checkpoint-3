@@ -1,13 +1,11 @@
+#Creating a bucket
 from google.cloud import storage
 
 def create_bucket(bucket_name):
-    #bucket_name = "sevenke-test-bucket3"
-
+    
     storage_client = storage.Client()
-    #The bucket name is the only ettribute that we need to add, everything else is optional
+    
     bucket = storage_client.bucket(bucket_name)
-
-    #optional stuff
     bucket.storage_class = "STANDARD"
     new_bucket = storage_client.create_bucket(bucket, location="us")
 
@@ -17,6 +15,7 @@ def create_bucket(bucket_name):
 
 create_bucket("checkpoint-storage-bucket")
 
+#Grabbing data and printing the txt file
 import requests
 
 response = requests.get("https://2ri98gd9i4.execute-api.us-east-1.amazonaws.com/dev/academy-checkpoint2-json")
@@ -33,3 +32,20 @@ with open("checkpoint.txt", "w") as x:
     for it in parameter_list:
         x.write(f"{it}\n")
 
+
+#Uploading the file
+def upload_blob(bucket_name, source_file_name, destination_blob_name):
+
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+
+    blob.upload_from_filename(source_file_name)
+
+    print(
+        "File {} uploaded to {}.".format(
+            source_file_name, destination_blob_name
+        )
+    )
+
+upload_blob("checkpoint-storage-bucket", "C:/Users/KrisztinaKarizs/Desktop/Python exercises/checkpoint3/vko3-1/checkpoint.txt", "checkpoint.txt")
